@@ -93,7 +93,7 @@ function milliSeconds(){
 };
 
 setInterval((function tick() {
-    let Sounds = new Audio('/PRACTICES/HTML:CSS/ClockTick.mp3')
+    let Sounds = new Audio('https://boygemini.github.io/projects/Digital%20Clock/ClockTick.mp3')
     Sounds.play();
 }),1000)
 
