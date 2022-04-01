@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LoadUp Github Users Using Ajax</title>
+    <script src="/PRACTICES/JAVASCRIPT/ajax2.js" defer></script>
+
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Nunito');
+      @import url('https://fonts.googleapis.com/css2?family=Lato');
+        *{
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+          font-family: 'Nunito';
+        }
+    
+        .bigcontainer{
+          margin:40px auto;
+          width: 75%;
+          height: auto;
+          background-color:rgba(245, 245, 245, 0.747);
+          border-radius: 10px;
+          padding: 20px;
+        }
+    
+        .searchbox{
+          width: 100%;
+        }
+    
+        input[type=text]{
+          width: 100%;
+          height: 60px;
+          border-radius: 5px;
+          border: 1px solid rgba(87, 82, 82, 0.514);
+          padding: 10px;
+          font-size: 17px;
+          color: rgb(63, 62, 62);
+        }
+    
+        input[type=submit]{
+          width: 100%;
+          margin:10px auto;
+          height: 50px;
+          border-radius: 5px;
+          border: none;
+          background-color: rgb(28, 138, 132);
+          color: whitesmoke;
+          cursor: pointer;
+          font-size: 20px;
+        }
+    
+        hr{
+          width: 70%;
+          margin: 30px auto;
+          /* border:1px solid rgba(36, 148, 36, 0.171); */
+          border-color: rgba(128, 128, 128, 0.329);
+          border-left: none;
+          border-right: none;
+          border-bottom: none;
+        }
+    
+        .resultbox{
+          height: 430px;
+          overflow-y: scroll;
+          width: 100%;
+          background-color: white;
+          padding: 15px;
+          border-radius: 5px;
+          display: flex;
+          justify-content: center;
+          position: relative;
+        }
+    
+        .result{
+          background-color: white;
+          box-shadow: 0px 0px 10px 3px rgba(128, 128, 128, 0.212);
+          padding: 10px;
+          border-radius: 5px;
+        }
+    
+        p{
+          text-align: center;
+          color: gray;
+        }
+    
+        h4{
+            font-size: 14px;
+          font-weight: 900;
+          /* background-color: rgb(32, 81, 243); */
+          width: auto;
+          display: inline;
+          color: grey;
+          padding: 5px 10px 5px 10px;
+          border-top-right-radius: 20px;
+          border-top-left-radius: 20px;
+          border-bottom-left-radius: 20px;
+          border-bottom-right-radius: 20px;
+          margin-left: 10px;
+        }
+
+        h5{
+          font-weight: 400;
+          font-size: 15px;
+          margin-top: 10px;
+          display: flex;
+          justify-content: space-between;
+        }
+
+        h5:first-child{
+          margin-top: 0px;
+        }
+
+        .label{
+          
+          padding: 7px;
+          border-left:3px solid;
+          border-top-left-radius: 5px;
+          border-bottom-left-radius: 5px;
+          border-color: #00e1ffc7;
+          border-right: none;
+          border-top: none;
+          border-bottom: none;
+          background-color: #ffffffbe;
+          border-top-right-radius: 5px;
+          border-bottom-right-radius: 5px;
+          
+        }
+
+        .detail{
+          padding: 7px;
+          font-size: 16px;
+          font-family: 'Lato';
+          border-top-right-radius: 5px;
+          border-top-left-radius: 5px;
+          border-bottom-left-radius: 5px;
+          border-bottom-right-radius: 5px;
+          color: white;
+          background-color: rgba(11, 15, 19, 0.767);
+        }
+    
+        li{
+          list-style: none;
+        }
+
+        .card{
+            width: 270px;
+            height: auto;
+            box-shadow: 0px 0px 15px 3px rgba(128, 128, 128, 0.219);
+            border-radius: 10px;
+            margin: 10px auto;
+
+        }
+
+        .cards{
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        img{
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .cardcontainer{
+          display: flex;
+          flex-wrap:wrap ;
+          justify-content: center;
+          align-items: center;
+        }
+    
+        .cardContent{
+            padding: 20px 10px 20px 10px ;
+            background-color: rgba(50, 221, 221, 0.288);
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            margin-top: 15px;
+        }
+
+        .cardcontent{
+            padding-top:10px;
+        }
+
+        .loader{
+          background-color: rgb(51, 31, 233);
+          color: whitesmoke;
+          padding: 7px;
+          border-top-right-radius: 5px;
+          border-top-left-radius: 5px;
+          border-bottom-left-radius: 5px;
+          border-bottom-right-radius: 5px;
+        }
+
+        .notfound{
+          background-color: red;
+          color: whitesmoke;
+          padding: 7px;
+          border-top-right-radius: 5px;
+          border-top-left-radius: 5px;
+          border-bottom-left-radius: 5px;
+          border-bottom-right-radius: 5px;
+          text-align: center;
+        }
+
+        .loadercontainer{
+          /* background-color: rgba(0, 128, 128, 0.322);
+          height: 100%;
+          width: 100%; */
+          justify-content: center;
+          align-items: center;
+        }
+
+        .nfcontainer{
+          /* background-color: rgba(0, 128, 128, 0.322);
+          height: 20%;
+          width: 20%;
+          position: absolute;
+          display: flex; */
+          justify-content: center;
+          align-items: center;
+          border-top-right-radius: 5px;
+          border-top-left-radius: 5px;
+          border-bottom-left-radius: 5px;
+          border-bottom-right-radius: 5px;
+        }
+
+        .header{
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          margin-top: 40px;
+        }
+
+        .github{
+          color: teal;
+        }
+
+        p{
+          font-size: 18px;
+        }
+      </style>
+</head>
+<body>
+  <div class="header"><h1>Loadup <span class="github">Github</span> Users</h1></div>
+    <div class="bigcontainer">
+        <div class="searchbox">
+          <form method="GET" action="#">
+            <label for="seacrh">Input a Url to loadup its users :</label><br><br>
+            <input type="text" name="search" id="search" placeholder="Search 'https://api.github.com/users' by default..."><br>
+            <input type="submit" value="Search" id="go">
+          </form>
+        </div><br>
+        <hr><br>
+    
+        <div class="resultbox">
+          <div class="cardcontainer" id="display">
+            <p id="p">Results shows here</p>
+
+            <div class="cards" id="Container">
+                <!-- <div class="card" id="clientCard">
+                    <img id="clientAvi" alt="" srcset="" width="100%" height="200px">
+                    <div class="cardcontent" id="clientCardInfo">
+                        <h4>ID : <span id="clientID"></span></h4>
+                        <h5>Login : <span id="clientLogin">Yousef</span></h5>
+                        <h5>Age : <span id="clientAge">34</span></h5>
+                        <h5>Visit Github Page : <span id="clientGit">Yousef</span></h5>
+                    </div>
+                </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+</body>
+</html>
