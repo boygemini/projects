@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Digital Clock</title>
+    <script src="/PRACTICES/JAVASCRIPT/digital clock.js" defer></script>
+    <script
+      src="http://172.20.10.2:3000/JAVASCRIPT/digital%20clock.js"
+      defer
+    ></script>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Happy+Monkey&display=swap");
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Happy Monkey";
+        text-shadow: -5px -4px 6px #04010c3a;
+      }
+
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        width: 100%;
+        background-color: whitesmoke;
+        overflow: scroll;
+      }
+      .majorcontainer {
+        width: 50%;
+      }
+
+      .container {
+        width: 100%;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        padding: 10px;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+        border-bottom-left-radius: 20px;
+        /* background-color: brown; */
+      }
+      h1 {
+        width: 33%;
+        height: 300px;
+        border: 1px solid slategray;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+        padding-left: 60px;
+        padding-right: 60px;
+        margin: 10px;
+        font-size: 10rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-shadow: -5px -4px 6px #04010c3a;
+        box-shadow: 0px 30px 30px -25px #708090b9;
+        background-color: #03091b18;
+        color: #0c1c2c;
+      }
+
+      #seconds {
+        /* border: 2px solid cadetblue; */
+        animation: tick 1s ease-in-out;
+        animation-iteration-count: infinite;
+        position: relative;
+      }
+
+      #milli {
+        font-size: 12px;
+        position: absolute;
+        background-color: cadetblue;
+        padding: 10px;
+        width: 50px;
+        text-align: center;
+        color: white;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+        border-bottom-left-radius: 5px;
+        box-shadow: -5px 10px 10px -3px rgba(128, 128, 128, 0.541);
+        transform: scale(1.2);
+        top: 4%;
+        right: 5%;
+      }
+
+      .date {
+        display: flex;
+        width: 31%;
+        background-color: #03091b18;
+        border-top-left-radius: 0px;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+        border: 1px solid #8080807c;
+        box-shadow: 0px 30px 30px -25px #708090b9;
+      }
+
+      .date p {
+        width: 33.33%;
+        height: 80px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #0c1c2c;
+        font-weight: 500;
+        font-size: 17px;
+        text-shadow: -3px 3px 3px #04010c3a;
+      }
+
+      .date p:nth-child(2) {
+        border: 1px solid #8080807c;
+        border-top: none;
+        border-bottom: none;
+      }
+
+      .dayname {
+        background-color: cadetblue;
+        font-family: "Happy Monkey", cursive;
+        padding: 10px;
+        width: 130px;
+        display: inline-block;
+        text-align: center;
+        color: whitesmoke;
+        text-shadow: -5px -4px 6px #04010c3a;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 0px;
+        border-bottom-left-radius: 0px;
+      }
+
+      .daytime {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .greet {
+        background-color: #294663;
+        width: 20%;
+        padding: 10px 15px 10px 15px;
+        border-radius: 10px;
+        color: white;
+        box-shadow: 0px 30px 30px -25px #708090b9;
+      }
+
+      .gm-gn {
+        font-size: 15px;
+        font-weight: 400;
+      }
+
+      .am-pm {
+        text-align: center;
+        background-color: #258119;
+        border-radius: 5px;
+        padding: 5px;
+        margin-top: 15px;
+        float: right;
+        text-shadow: -5px -4px 6px #04010c3a;
+      }
+
+      @keyframes tick {
+        from {
+          /* border-color: cadetblue; */
+          color: grey;
+          transform: scale(1);
+        }
+        to {
+          /* border-color: gray; */
+          color: gray;
+          transform: scale(1.01);
+        }
+      }
+
+      @media screen and (min-width: 1024px) {
+        .majorcontainer {
+          width: 900px;
+        }
+      }
+
+      @media screen and (min-width: 810px) and (max-width: 1023px) {
+        .majorcontainer {
+          width: 790px;
+          padding: 20px;
+        }
+
+        h1 {
+          font-size: 9rem;
+        }
+      }
+
+      @media screen and (min-width: 610px) and (max-width: 809px) {
+        .majorcontainer {
+          width: 90%;
+        }
+
+        h1 {
+          font-size: 7rem;
+        }
+
+        #milli {
+          top: 4%;
+          right: 7%;
+        }
+
+        .date p {
+          height: auto;
+        }
+      }
+
+      @media screen and (min-width: 340px) and (max-width: 609px) {
+        /* body{
+                width: 100vw;
+            } */
+        .majorcontainer {
+          width: 90%;
+        }
+
+        h1 {
+          font-size: 4rem;
+          height: 150px;
+          width: 33.33%;
+          margin: 0px;
+          padding-left: 50px;
+          padding-right: 50px;
+          border-top-left-radius: 0px;
+          border-top-right-radius: 0px;
+          border-bottom-right-radius: 0px;
+          border-bottom-left-radius: 0px;
+        }
+
+        .container h1:first-child {
+          margin-left: 0px;
+
+          border-bottom-left-radius: 10px;
+        }
+
+        .container h1:last-child {
+          margin-right: 0px;
+          border-bottom-right-radius: 10px;
+        }
+
+        .container {
+          width: 100%;
+          margin-top: 0px;
+          padding: 0px;
+        }
+        .greet {
+          border-top-left-radius: 0px;
+          width: 100%;
+        }
+
+        .date {
+          margin-top: 30px;
+          border-top-left-radius: 10px;
+          width: 100%;
+          border-top-right-radius: 10px;
+          border-bottom-right-radius: 0px;
+          border-bottom-left-radius: 0px;
+        }
+
+        #milli {
+          padding: 5px;
+          width: 30px;
+          font-size: 10px;
+          top: 5%;
+          right: 8%;
+        }
+
+        .daytime {
+          display: flex;
+          flex-direction: column-reverse;
+        }
+
+        .dayname {
+          padding: 10px;
+          width: auto;
+        }
+      }
+
+      @media screen and (min-height: 0px) and (max-height: 380px) {
+        body {
+          height: 100%;
+          padding-top: 40px;
+          padding-bottom: 40px;
+        }
+      }
+
+      @media screen and (min-width: 0px) and (max-width: 339px) {
+        /* body{
+                height: 100%;
+                padding-top: 40px;
+            } */
+        .majorcontainer {
+          width: 90%;
+        }
+
+        .container {
+          flex-direction: column;
+          margin-top: 10px;
+          padding: 0;
+        }
+
+        h1 {
+          font-size: 4rem;
+          height: 150px;
+          width: 100%;
+          margin: 8px 0px 8px 0px;
+          padding-left: 50px;
+          padding-right: 50px;
+        }
+
+        .date,
+        .greet {
+          width: 100%;
+        }
+
+        .greet {
+          border-top-left-radius: 0px;
+          border-top-right-radius: 0px;
+        }
+
+        .date {
+          margin-top: 10px;
+          border-top-left-radius: 10px;
+        }
+
+        #milli {
+          padding: 5px;
+          width: 30px;
+          font-size: 10px;
+          top: 5%;
+          right: 8%;
+        }
+
+        .daytime {
+          display: flex;
+          flex-direction: column-reverse;
+        }
+
+        .dayname {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="majorcontainer">
+      <div class="dayname">
+        <span style="font-size: 13px; color: rgb(228, 255, 227)">Happy👋🏾,</span>
+        <p id="dayname">--</p>
+      </div>
+      <div class="daytime">
+        <div class="date" id="date">
+          <p id="day">--</p>
+          <p id="month">---</p>
+          <p id="year">----</p>
+        </div>
+        <div class="greet">
+          <h5 class="gm-gn" id="greet">Good Evening!</h5>
+          <h5 class="am-pm" id="am-pm">AM</h5>
+        </div>
+      </div>
+      <div class="container">
+        <h1 id="hours">00</h1>
+        <h1 id="minutes">00</h1>
+        <h1 id="seconds">
+          <span id="secs"> 00 </span> <span id="milli"> 00 </span>
+        </h1>
+      </div>
+    </div>
+  </body>
+</html>
