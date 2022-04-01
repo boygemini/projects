@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carousel</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+          "Lucida Sans", Arial, sans-serif;
+        font-family: 300;
+      }
+
+      body {
+          background-color: whitesmoke;
+      }
+
+     
+
+      .mark {
+        background-color: violet;
+        height: 20px;
+        width: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 100% 100% 100% 100%;
+      }
+
+      .props {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .toggles {
+        width:100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 40px auto;
+        cursor: pointer;
+      }
+
+      .toggle {
+        width: 200px;
+        height: 60px;
+        background-color: #881188;
+        background: linear-gradient(
+          -10deg,
+          rgb(183, 46, 236),
+          rgb(247, 39, 195)
+        );
+        box-shadow: 0px 0px 5px 1px grey;
+        border-top-left-radius: 40px;
+        border-top-right-radius: 40px;
+        border-bottom-left-radius: 40px;
+        border-bottom-right-radius: 40px;
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .bluebg {
+        background-color: #881188a8;
+        border-top-left-radius: 40px;
+        border-top-right-radius: 40px;
+        border-bottom-left-radius: 40px;
+        border-bottom-right-radius: 40px;
+        width: 50%;
+        height: 100%;
+        color: whitesmoke;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .bac {
+        width: 100%;
+        display: flex;
+      }
+
+      .front h2 {
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .front {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 1000;
+        color: whitesmoke;
+        border-top-left-radius: 40px;
+        border-top-right-radius: 40px;
+        border-bottom-left-radius: 40px;
+        border-bottom-right-radius: 40px;
+      }
+
+      .roundtoggle {
+        width: 60px;
+        height: 60px;
+        margin-left: 20px;
+        border-top-left-radius: 40px;
+        border-top-right-radius: 40px;
+        border-bottom-left-radius: 40px;
+        border-bottom-right-radius: 40px;
+        display: flex;
+      }
+
+      .red {
+        background-color: red;
+        background: linear-gradient(
+          10deg,
+          rgb(183, 46, 236),
+          rgb(247, 39, 195)
+        );
+        width: 50%;
+        height: 100%;
+        border-top-left-radius: 40px;
+        border-bottom-left-radius: 40px;
+      }
+
+      .green {
+        background-color: #0c740c;
+        background: linear-gradient(-20deg, #0c740c, #5dc45d);
+        width: 50%;
+        height: 100%;
+        border-top-right-radius: 40px;
+        border-bottom-right-radius: 40px;
+      }
+
+      .redcontainer {
+        display: flex;
+        justify-content: center;
+        /* box-shadow: 40px 40px 40px -20px rgba(112, 128, 144, 0.322); */
+        border-radius: 5px;
+        width: 900px;
+        margin: 120px auto;
+        border-radius: 15px;
+      }
+
+      .greencontainer {
+        display: flex;
+        justify-content: center;
+        /* box-shadow: 40px 40px 40px -20px rgba(112, 128, 144, 0.322); */
+        border-radius: 5px;
+        width: 900px;
+        margin: 120px auto;
+        border-radius: 15px;
+      }
+
+      .gpackage {
+        width: 33.33%;
+        /* background-color: white; */
+        margin: 10px;
+        border-radius: 15px;
+        height: auto;
+        border: 1px solid rgba(128, 128, 128, 0.308);
+        box-shadow: 0px 5px 20px -13px gray;
+        transition: 0.3s ease-in;
+      }
+
+      .gpackage:nth-child(2) {
+        transform: scale(1.156);
+        box-shadow: 0px 10px 50px -10px rgba(112, 128, 144, 0.726);
+        transition: 0.3s ease-in;
+        z-index: 100;
+      }
+
+      .gpackage:nth-child(2) .top {
+        margin-top: -10px;
+      }
+
+      /* .package:hover{
+            transform: scale(1.15);
+            box-shadow: 0px 10px 20px 10px rgba(112, 128, 144, 0.178);
+            transition: .3s ease-in;
+            z-index: 100;
+        } */
+
+      /* .gpackage:hover .top{
+            background: linear-gradient(-10deg, rgb(183, 46, 236) , rgb(247, 39, 195));
+            transition: .3s ease-in;
+        } */
+
+      .gtop {
+        background-color: #0c740c;
+        height: 200px;
+        display: flex;
+        justify-content: flex-end;
+        padding-right: 30px;
+        align-items: center;
+        color: rgb(50, 57, 65);
+        border-radius: 15px 15px 0px 0px;
+      }
+
+      .gprice {
+        text-align: center;
+        background-color: #e6ffed;
+        padding: 10px;
+        border-radius: 15px;
+      }
+      /* .gmaintag{
+            text-shadow: -1px 2px 1px rgba(245, 245, 245, 0.445);
+        } */
+
+      .gtag {
+        color: #5cecff;
+        padding: 5px;
+        background-color: #010c01;
+        border-radius: 5px;
+        box-shadow: 0px 15px 20px -10px #3825e777;
+      }
+
+      .gmark {
+        background-color: #010c01;
+        color: #5cecff;
+        height: 20px;
+        width: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 100% 100% 100% 100%;
+      }
+
+      .gclass {
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-top: 15px;
+        margin-top: -25px;
+        z-index: 100;
+        background-color: white;
+        border-radius: 20px 20px 20px 20px;
+      }
+
+      p {
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
+      p:last-child {
+        border-bottom: none;
+      }
+
+      .gprops {
+        display: flex;
+        justify-content: space-between;
+        border: 1px solid rgba(112, 128, 144, 0.486);
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        font-weight: 100;
+        font-size: 14px;
+        color: rgba(17, 25, 32, 0.795);
+      }
+
+      .gselectdiv {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+      }
+
+      .gselect {
+        margin: auto;
+        width: 140px;
+        height: 32.5px;
+        font-size: 15px;
+        border: 1px solid grey;
+        border-radius: 5px;
+        color: #e6ffed;
+        padding: 5px;
+        background-color: #0c740c;
+        border-radius: 5px;
+        box-shadow: 0px 15px 20px -10px #3825e777;
+      }
+
+      .gspec {
+        padding-bottom: 10px;
+        color: rgba(25, 6, 36, 0.822);
+        font-weight: 400;
+        font-size: 17px;
+      }
+
+      span {
+        font-size: 15px;
+        font-weight: 200;
+        color: #5cecff91;
+      }
+
+      .gmp {
+        font-size: 15px;
+        text-align: center;
+        color: black;
+        background-color: rgb(255, 211, 15);
+        height: 40px;
+        border-radius: 15px 15px 0px 0px;
+      }
+
+      .gmpp {
+        margin-top: -20px;
+      }
+
+      .popular {
+        background-color: rgb(255, 211, 15);
+        font-size: 12px;
+        height: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 15px;
+        margin-top: 15px;
+      }
+
+      .greencontainer {
+        transition: fade 0.4s;
+      }
+
+      @keyframes fade {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      @media screen and (min-width: 900px) {
+        * {
+          font-size: 1em;
+        }
+        .redcontainer {
+          display: flex;
+          justify-content: center;
+          /* box-shadow: 40px 40px 40px -20px rgba(112, 128, 144, 0.322); */
+          border-radius: 5px;
+          width: 900px;
+          margin: 120px auto;
+          border-radius: 15px;
+        }
+
+        .package {
+          width: 33.33%;
+          /* background-color: white; */
+          margin: 10px;
+          border-radius: 15px;
+          height: auto;
+          border: 1px solid rgba(128, 128, 128, 0.308);
+          box-shadow: 0px 5px 20px -13px gray;
+          transition: 0.3s ease-in;
+        }
+
+        .package:nth-child(2) {
+          transform: scale(1.156);
+          box-shadow: 0px 10px 50px -10px rgba(112, 128, 144, 0.726);
+          transition: 0.3s ease-in;
+          z-index: 100;
+        }
+
+        .package:nth-child(2) .top {
+          margin-top: -10px;
+        }
+
+        /* .package:hover{
+            transform: scale(1.15);
+            box-shadow: 0px 10px 20px 10px rgba(112, 128, 144, 0.178);
+            transition: .3s ease-in;
+            z-index: 100;
+        } */
+
+        .package:hover .top {
+          background: linear-gradient(
+            -10deg,
+            rgb(183, 46, 236),
+            rgb(247, 39, 195)
+          );
+          transition: 0.3s ease-in;
+        }
+
+        .top {
+          background-color: red;
+          background: linear-gradient(
+            -210deg,
+            rgb(183, 46, 236),
+            rgb(247, 39, 195)
+          );
+          height: 200px;
+          display: flex;
+          justify-content: flex-end;
+          padding-right: 30px;
+          align-items: center;
+          color: rgba(245, 245, 245, 0.973);
+          border-radius: 15px 15px 0px 0px;
+        }
+
+        .price {
+          text-align: center;
+        }
+        .maintag {
+          text-shadow: -1px 2px 1px rgba(245, 245, 245, 0.445);
+        }
+
+        .tag {
+          color: #5cecff;
+          padding: 5px;
+          background-color: #881188;
+          border-radius: 5px;
+          box-shadow: 0px 15px 20px -10px #3825e777;
+        }
+
+        .class {
+          padding-left: 15px;
+          padding-right: 15px;
+          padding-top: 15px;
+          margin-top: -25px;
+          z-index: 100;
+          background-color: white;
+          border-radius: 20px 20px 20px 20px;
+        }
+
+        p {
+          padding-top: 10px;
+          padding-bottom: 10px;
+        }
+        p:last-child {
+          border-bottom: none;
+        }
+
+        .props {
+          display: flex;
+          justify-content: space-between;
+          border: 1px solid rgba(112, 128, 144, 0.486);
+          border-top: none;
+          border-left: none;
+          border-right: none;
+          font-weight: 100;
+          font-size: 14px;
+          color: rgba(17, 25, 32, 0.795);
+        }
+
+        .selectdiv {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          padding: 20px;
+        }
+
+        .select {
+          margin: auto;
+          width: 140px;
+          height: 32.5px;
+          font-size: 15px;
+          border: 1px solid grey;
+          border-radius: 5px;
+          color: #5cecff;
+          padding: 5px;
+          background-color: rgb(136, 17, 136);
+          border-radius: 5px;
+          box-shadow: 0px 15px 20px -10px #3825e777;
+        }
+
+        .spec {
+          padding-bottom: 10px;
+          color: rgba(25, 6, 36, 0.822);
+          font-weight: 400;
+          font-size: 17px;
+        }
+
+        span {
+          font-size: 15px;
+          font-weight: 200;
+          color: #5cecff91;
+        }
+
+        .mp {
+          font-size: 15px;
+          text-align: center;
+          color: black;
+          background-color: rgb(255, 211, 15);
+          height: 40px;
+          border-radius: 15px 15px 0px 0px;
+        }
+
+        .mpp {
+          margin-top: -20px;
+        }
+      }
+
+      @media screen and (max-width: 899px) {
+
+        * {
+          font-size: 1.051em;
+        }
+
+        .toggle{
+            height: 45px;
+            width: 200px;
+        }
+
+        .front {
+          font-size: 13px;
+        }
+
+        .greencontainer {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          width: 100%;
+        }
+
+        .gtop {
+          padding-top: 30px;
+          padding-bottom: 50px;
+        }
+
+        .redcontainer {
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+          /* box-shadow: 40px 40px 40px -20px rgba(112, 128, 144, 0.322); */
+          border-radius: 5px;
+          width: 100%;
+          margin: 120px auto;
+          border-radius: 15px;
+        }
+
+        .package {
+          width: 90%;
+          /* background-color: white; */
+          margin: 10px;
+          border-radius: 15px;
+          height: auto;
+          border: 1px solid rgba(128, 128, 128, 0.308);
+          box-shadow: 0px 5px 20px -13px gray;
+          transition: 0.3s ease-in;
+        }
+
+        .package:nth-child(2) {
+          /* transform: scale(1.156);
+            box-shadow: 0px 0px 20px 20px rgba(112, 128, 144, 0.253);
+            transition: .3s ease-in;
+            z-index: 100; */
+          margin-top: 30px;
+        }
+
+        .package:nth-child(2) .top {
+          margin-top: -10px;
+        }
+
+        /* .package:hover{
+            transform: scale(1.15);
+            box-shadow: 0px 10px 20px 10px rgba(112, 128, 144, 0.178);
+            transition: .3s ease-in;
+            z-index: 100;
+        } */
+
+        .package:hover .top {
+          background: linear-gradient(
+            -10deg,
+            rgb(183, 46, 236),
+            rgb(247, 39, 195)
+          );
+          transition: 0.3s ease-in;
+        }
+
+        .top {
+          background-color: red;
+          background: linear-gradient(
+            -210deg,
+            rgb(183, 46, 236),
+            rgb(247, 39, 195)
+          );
+          height: 200px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: rgba(245, 245, 245, 0.973);
+          border-radius: 15px 15px 0px 0px;
+        }
+
+        .price {
+          text-align: center;
+        }
+        .maintag {
+          text-shadow: -1px 2px 1px rgba(245, 245, 245, 0.445);
+        }
+
+        .tag {
+          color: #5cecff;
+          padding: 5px;
+          background-color: rgb(136, 17, 136);
+          border-radius: 5px;
+          box-shadow: 0px 15px 20px -10px #3825e777;
+        }
+
+        .class {
+          padding-left: 15px;
+          padding-right: 15px;
+          padding-top: 15px;
+          margin-top: -25px;
+          z-index: 100;
+          background-color: white;
+          border-radius: 20px 20px 20px 20px;
+        }
+
+        p {
+          padding-top: 10px;
+          padding-bottom: 10px;
+        }
+        p:last-child {
+          border-bottom: none;
+        }
+
+        .props {
+          display: flex;
+          justify-content: space-between;
+          border: 1px solid rgba(112, 128, 144, 0.486);
+          border-top: none;
+          border-left: none;
+          border-right: none;
+          font-weight: 100;
+          font-size: 14px;
+          color: rgba(17, 25, 32, 0.795);
+        }
+
+        .selectdiv {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          padding: 20px;
+        }
+
+        .select {
+          margin: auto;
+          width: 140px;
+          height: 40px;
+          font-size: 15px;
+          border: 1px solid grey;
+          border-radius: 5px;
+          color: #5cecff;
+          padding: 5px;
+          background-color: rgb(136, 17, 136);
+          border-radius: 5px;
+          box-shadow: 0px 15px 20px -10px #3825e777;
+        }
+
+        .spec {
+          padding-bottom: 10px;
+          color: rgba(25, 6, 36, 0.822);
+          font-weight: 400;
+          font-size: 17px;
+        }
+
+        span {
+          font-size: 18px;
+          color: #5cecff91;
+        }
+
+        .mp {
+          font-size: 15px;
+          text-align: center;
+          color: black;
+          background-color: rgb(255, 211, 15);
+          height: 40px;
+          border-radius: 15px 15px 0px 0px;
+        }
+
+        .mpp {
+          margin-top: -20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    
+
+    <div class="toggles">
+      <div class="toggle" id="toggle">
+        <div class="front">
+          <h2>Monthly</h2>
+          <h2>Yearly</h2>
+        </div>
+        <div class="bac">
+          <h2 class="bluebg" id="move"></h2>
+        </div>
+      </div>
+
+      <div class="roundtoggle" id="roundtoggle">
+        <div class="red" id="red"></div>
+        <div class="green" id="green"></div>
+      </div>
+    </div>
+
+    <div class="greencontainer" id="greencontainer">
+      <div class="package">
+        <div class="gtop">
+          <div class="gprice">
+            <h1 class="gmaintag">Platinum</h1>
+            <br />
+            <h1 class="gtag" id="tag">$150<span>/month</span></h1>
+          </div>
+        </div>
+        <div class="class">
+          <h2 class="spec">You'll Get</h2>
+          <div class="props">
+            <p>All limited links</p>
+            <p class="gmark">✓</p>
+          </div>
+          <div class="props">
+            <p>Own anlytics platform</p>
+            <p class="gmark">✓</p>
+          </div>
+          <div class="props">
+            <p>Chat support</p>
+            <p class="gmark">✓</p>
+          </div>
+          <div class="props">
+            <p>Optimize hashtags</p>
+            <p class="gmark">✓</p>
+          </div>
+          <div class="props">
+            <p>Unlimited users</p>
+            <p class="gmark">✓</p>
+          </div>
+          <div class="props">
+            <p>Unlimited Message credits</p>
+            <p class="gmark">✓</p>
+          </div>
+          <div class="selectdiv"><button class="gselect">Choose</button></div>
+        </div>
+      </div>
+
+      <div class="package">
+        <div class="gtop">
+          <div class="gprice">
+            <h1 class="gmaintag">Gold</h1>
+            <br />
+            <h1 class="gtag" id="tag1">$95<span>/month</span></h1>
+            <p class="popular">Most popular</p>
+          </div>
+        </div>
+        <div class="class">
+          <h2 class="spec">You'll Get</h2>
+          <div class="props">
+            <p>All limited links</p>
+            <p class="gmark">✓</p>
+          </div>
+          <div class="props">
+            <p>Own anlytics platform</p>
+            <p class="gmark">✓</p>
+          </div>
+          <div class="props">
+            <p>Chat support</p>
+            <p class="gmark">✓</p>
+          </div>
+          <div class="props">
+            <p>Optimize hashtags</p>
+            <p class="gmark">✓</p>
+          </div>
+          <div class="props">
+            <p>Unlimited users</p>
+            <p class="gmark">✓</p>
+          </div>
+          <div class="props">
+            <p>1500 Message credits</p>
+            <p class="gmark">✓</p>
+          </div>
+          <div class="selectdiv"><button class="gselect">Choose</button></div>
+        </div>
+      </div>
+
+      <div class="package">
+        <div class="gtop">
+          <div class="gprice">
+            <h1 class="gmaintag">Basic</h1>
+            <br />
+            <h1 class="gtag" id="tag2">$50<span>/month</span></h1>
+          </div>
+        </div>
+        <div class="class">
+          <h2 class="spec">You'll Get</h2>
+          <div class="props">
+            <p>All limited links</p>
+            <p class="gmark">✓</p>
+          </div>
+          <div class="props">
+            <p>Own anlytics platform</p>
+            <p class="gmark">✓</p>
+          </div>
+          <div class="props">
+            <p>Chat support</p>
+            <p class="gmark">✓</p>
+          </div>
+          <div class="props">
+            <p>Optimize hashtags</p>
+            <p class="gmark">✓</p>
+          </div>
+          <div class="props">
+            <p>Up to 3 users</p>
+            <p class="gmark">✓</p>
+          </div>
+          <div class="props">
+            <p>200 Message credits</p>
+            <p class="gmark">✓</p>
+          </div>
+          <div class="selectdiv"><button class="gselect">Choose</button></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="redcontainer" id="redcontainer">
+      <div class="package">
+        <div class="top">
+          <div class="price">
+            <h1 class="maintag">Platinum</h1>
+            <br />
+            <h1 class="tag" id="tag00">$150<span>/month</span></h1>
+          </div>
+        </div>
+        <div class="class">
+          <h2 class="spec">You'll Get</h2>
+          <div class="props">
+            <p>All limited links</p>
+            <p class="mark">✓</p>
+          </div>
+          <div class="props">
+            <p>Own anlytics platform</p>
+            <p class="mark">✓</p>
+          </div>
+          <div class="props">
+            <p>Chat support</p>
+            <p class="mark">✓</p>
+          </div>
+          <div class="props">
+            <p>Optimize hashtags</p>
+            <p class="mark">✓</p>
+          </div>
+          <div class="props">
+            <p>Unlimited users</p>
+            <p class="mark">✓</p>
+          </div>
+          <div class="props">
+            <p>Unlimited Message credits</p>
+            <p class="mark">✓</p>
+          </div>
+          <div class="selectdiv"><button class="select">Choose</button></div>
+        </div>
+      </div>
+
+      <div class="package">
+        <h2 class="mp"><p class="mpp">Most popular</p></h2>
+        <div class="top">
+          <div class="price">
+            <h1 class="maintag">Gold</h1>
+            <br />
+            <h1 class="tag" id="tag3">$95<span>/month</span></h1>
+          </div>
+        </div>
+        <div class="class">
+          <h2 class="spec">Specifications</h2>
+          <div class="props">
+            <p>All limited links</p>
+            <p class="mark">✓</p>
+          </div>
+          <div class="props">
+            <p>Own anlytics platform</p>
+            <p class="mark">✓</p>
+          </div>
+          <div class="props">
+            <p>Chat support</p>
+            <p class="mark">✓</p>
+          </div>
+          <div class="props">
+            <p>Optimize hashtags</p>
+            <p class="mark">✓</p>
+          </div>
+          <div class="props">
+            <p>Unlimited users</p>
+            <p class="mark">✓</p>
+          </div>
+          <div class="props">
+            <p>1500 Message credits</p>
+            <p class="mark">✓</p>
+          </div>
+          <div class="selectdiv">
+            <button class="select">Choose Plan</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="package">
+        <div class="top">
+          <div class="price">
+            <h1 class="maintag">Bronze</h1>
+            <br />
+            <h1 class="tag" id="tag4">$50<span>/month</span></h1>
+          </div>
+        </div>
+        <div class="class">
+          <h2 class="spec">Specifications</h2>
+          <div class="props">
+            <p>All limited links</p>
+            <p class="mark">✓</p>
+          </div>
+          <div class="props">
+            <p>Own anlytics platform</p>
+            <p class="mark">✓</p>
+          </div>
+          <div class="props">
+            <p>Chat support</p>
+            <p class="mark">✓</p>
+          </div>
+          <div class="props">
+            <p>Optimize hashtags</p>
+            <p class="mark">✓</p>
+          </div>
+          <div class="props">
+            <p>Unlimited users</p>
+            <p class="mark">✓</p>
+          </div>
+          <div class="props">
+            <p>200 Message credits</p>
+            <p class="mark">✓</p>
+          </div>
+          <div class="selectdiv"><button class="select">Choose</button></div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let Toggle = document.getElementById("toggle");
+      let Move = document.getElementById("move");
+      let Tag = document.getElementById("tag");
+      let Tag1 = document.getElementById("tag1");
+      let Tag2 = document.getElementById("tag2");
+      let Tag00 = document.getElementById("tag00");
+      let Tag3 = document.getElementById("tag3");
+      let Tag4 = document.getElementById("tag4");
+      let redContainer = document.getElementById("redcontainer");
+      let greenContainer = document.getElementById("greencontainer");
+      let roundToggle = document.getElementById("roundtoggle");
+      let Green = document.getElementById("green");
+      let Red = document.getElementById("red");
+
+      Toggle.addEventListener("click", function (e) {
+        if (Move.style.marginLeft == "100px") {
+          Move.style.marginLeft = "0px";
+          Tag.innerHTML = "$150<span>/month</span>";
+          Tag00.innerHTML = "$150<span>/month</span>";
+          Tag1.innerHTML = "$95<span>/month</span>";
+          Tag2.innerHTML = "$50<span>/month</span>";
+          Tag3.innerHTML = "$95<span>/year</span>";
+          Tag4.innerHTML = "$50<span>/year</span>";
+        } else {
+          Move.style.marginLeft = "100px";
+          Move.style.transition = ".3s ease-out";
+          Tag.innerHTML = "$1,800<span>/year</span>";
+          Tag00.innerHTML = "$1,800<span>/year</span>";
+          Tag1.innerHTML = "$1,140<span>/year</span>";
+          Tag2.innerHTML = "$600<span>/year</span>";
+          Tag3.innerHTML = "$1,140<span>/year</span>";
+          Tag4.innerHTML = "$600<span>/year</span>";
+        }
+      });
+
+      redContainer.style.display = "none";
+      Green.style.width = "75%";
+      Green.style.transition = ".4s";
+      Red.style.transition = ".4s";
+      Red.style.width = "25%";
+      roundToggle.addEventListener("click", function (e) {
+        if (redContainer.style.display == "flex") {
+          redContainer.style.display = "none";
+          greenContainer.style.display = "flex";
+          Green.style.width = "75%";
+          Red.style.width = "25%";
+        } else {
+          redContainer.style.display = "flex";
+          greenContainer.style.display = "none";
+          Red.style.width = "75%";
+          Green.style.width = "25%";
+        }
+      });
+    </script>
+  </body>
+</html>
