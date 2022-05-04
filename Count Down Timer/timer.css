@@ -213,6 +213,8 @@ input[type="datetime-local"], input[type="date"]{
     background-color: transparent;
     border: 1px solid #2d737e;
     text-align: center;
+    display: flex;
+    justify-content: center;
 }
 
 .submit{
