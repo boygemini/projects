@@ -552,11 +552,11 @@ footer{
 }
 
 .loadUp{
-    animation: loadUp .4s cubic-bezier(0.6, -0.28, 1.45, 1.145);
+    animation: loadUp .4s ease-in-out;
 }
 
 .loadDown{
-    animation: loadDown .4s cubic-bezier(0.2, -4.28, 0, -1.145);
+    animation: loadDown .4s ease-in-out;
 }
 
 
