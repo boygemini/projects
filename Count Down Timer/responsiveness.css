@@ -1040,8 +1040,9 @@
           margin-top: 10px;
       }
 
-      .subscribe  h1{
+      .subscribe h1{
           font-size: 13px;
+         letter-spacing: 2px;
       }
 
       .subscribe input[type=text]{
