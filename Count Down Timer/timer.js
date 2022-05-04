@@ -7,7 +7,6 @@ let y3 = document.getElementById("y3");
 let n3 = document.getElementById("n3");
 
 let Q1 = document.getElementById("q1");
-let Q2 = document.getElementById("q2");
 let D1 = document.getElementById("datetime");
 let D2 = document.getElementById("dateonly");
 let Layer = document.getElementById("layer");
@@ -59,28 +58,16 @@ const displayForm = () => {
     Box[0].style.display = "flex";
   });
 
-  y1.addEventListener("click", () => {
+ y1.addEventListener("click", () => {
     Q1.style.display = "none";
-    Q2.style.display = "flex";
-    Q2.className += " jumpin";
+    D2.style.display = "block";
+    D2.className += " jumpin";
   });
 
   n1.addEventListener("click", () => {
     Q1.style.display = "none";
-    Q2.style.display = "flex";
-    Q2.className += " jumpin";
-  });
-
-  y2.addEventListener("click", () => {
-    Q2.style.display = "none";
     D1.style.display = "block";
     D1.className += " jumpin";
-  });
-
-  n2.addEventListener("click", () => {
-    Q2.style.display = "none";
-    D2.style.display = "block";
-    D2.className += " jumpin";
   });
 
   window.onclick = function (event) {
