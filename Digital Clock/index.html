@@ -13,11 +13,11 @@
 
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Happy+Monkey&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap");
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        font-family: "Happy Monkey";
         text-shadow: -5px -4px 6px #04010c3a;
       }
 
@@ -65,6 +65,7 @@
         box-shadow: 0px 30px 30px -25px #708090b9;
         background-color: #03091b18;
         color: #0c1c2c;
+        font-family: 'Noto Serif', sans-serif;
       }
 
       #seconds {
@@ -72,6 +73,8 @@
         animation: tick 1s ease-in-out;
         animation-iteration-count: infinite;
         position: relative;
+        font-family: 'Noto Serif', sans-serif;
+        color: rgb(56, 55, 55);
       }
 
       #milli {
@@ -114,6 +117,8 @@
         font-weight: 500;
         font-size: 17px;
         text-shadow: -3px 3px 3px #04010c3a;
+
+        font-family: "Happy Monkey";
       }
 
       .date p:nth-child(2) {
@@ -149,6 +154,8 @@
         border-radius: 10px;
         color: white;
         box-shadow: 0px 30px 30px -25px #708090b9;
+
+        font-family: "Happy Monkey";
       }
 
       .gm-gn {
@@ -169,12 +176,11 @@
       @keyframes tick {
         from {
           /* border-color: cadetblue; */
-          color: grey;
+
           transform: scale(1);
         }
         to {
           /* border-color: gray; */
-          color: gray;
           transform: scale(1.01);
         }
       }
@@ -251,6 +257,7 @@
           width: 100%;
           margin-top: 0px;
           padding: 0px;
+          background-color:#04010cd3;
         }
         .greet {
           border-top-left-radius: 0px;
@@ -307,6 +314,8 @@
           margin-top: 10px;
           padding: 0;
         }
+
+        
 
         h1 {
           font-size: 4rem;
