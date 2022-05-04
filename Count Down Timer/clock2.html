@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock</title>
+    <link rel="stylesheet" href="http://127.0.0.1:5500/HTML:CSS/clock2.css">
+    <link rel="stylesheet" href="http://127.0.0.1:5500/HTML:CSS/clock22.css">
+    <script src="http://127.0.0.1:5500/JAVASCRIPT/clock2.js" defer></script>
+
+    <link rel="stylesheet" href="http://172.20.10.2:3000/HTML%3ACSS/clock2.css">
+    <link rel="stylesheet" href="http://172.20.10.2:3000/HTML%3ACSS/clock22.css">
+    <script src="http://172.20.10.2:3000/JAVASCRIPT/clock2.js" defer></script>
+</head>
+
+<body id="body">
+    <div class="layer" id="layer">
+        <div class="pageContent">
+            <div class="ttop">
+                <div class="top" id="top">
+                    <hi class="logo">JB</hi>
+                    <div class="right">
+                        <nav class="navigation">
+                            <ul id="menulist">
+                                <li>ABOUT US</li>
+                                <li>CONTACT</li>
+                                <li onclick="displayForm()">CALCULATE DAYS<span class="icons8-calculator"></span></li>
+                                <!-- <li><span class="icons8-search"></span></li> -->
+                            </ul>
+
+                        </nav>
+                        <button class="Cal2" onclick="displayForm()">CALCULATE DAYS<span
+                                class="icons8-calculator"></span></button>
+                        <button class="menubutton" onclick="openMenu()"><span class="icons8-menu"></span></button>
+                        <div class="calculator" id="calcform">
+                            <div class="close"><button onclick="displayForm()">x</button></div>
+                            <div class="content" id="content">
+
+                                <div class="box choice" id="q1">
+                                    <p class="question">DO YOU WANT A COUNTDOWN?</p>
+                                    <div class="answer">
+                                        <button id="y1">YES</button><button id="n1">NOPE</button>
+                                    </div>
+                                </div>
+
+                                <div class="box choice" id="q2">
+                                    <p class="question">DO YOU WANT TO INCLUDE TIME?</p>
+                                    <div class="answer">
+                                        <button id="y2">YES</button><button id="n2">NOPE, JUST DAYS</button>
+                                    </div>
+                                </div>
+
+                                <div class="box date" id="datetime">
+                                    <p class="question">dates & time</p>
+                                    <div class="field">
+                                        <div class="dcat"><label>start : </label><br><input class="put"
+                                                type="datetime-local" name="date" id="date1"></div>
+                                        <div class="dcat"><label for="">To : <br></label><input type="datetime-local"
+                                                name="date" id="date2"></div>
+                                    </div>
+                                    <input type="submit" value="CALCULATE" class="submit"
+                                        onclick="check('date1','date2')">
+                                    <p class="error" id="errornote">one or more field is empty, please fill🧐</p>
+                                </div>
+
+                                <div class="box date" id="dateonly">
+                                    <p class="question">dates</p>
+                                    <div class="field">
+                                        <div class="dcat2 dcat"><label>start : </label><br><input class="put"
+                                                type="datetime-local" name="date" id="date3"></div>
+
+                                    </div>
+                                    <input type="submit" value="CALCULATE" class="submit" onclick="check2('date3')">
+                                    <p class="error" id="errornote2">one or more field is empty, please fill 😢</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mainsection" id="mainsection">
+                <div id="frontContent" class="frontContent">
+                    <h1 class="mid-text">WE ARE COMIMG SOON<p>DEC 25TH 2022</p>
+                    </h1>
+                    <div class="main-content">
+                        <aside class="social">
+                            <h5>
+                                <div class="icons8-facebook"></div>
+                            </h5>
+                            <h5>
+                                <div class="icons8-twitter"></div>
+                            </h5>
+                            <h5>
+                                <div class="icons8-linkedin"></div>
+                            </h5>
+                        </aside>
+
+                        <div class="time">
+                            <div class="a unitbox" id="mm">
+                                <h1 class="unit" id="days">00</h1>
+                                <p>DAYS</p>
+                            </div>
+                            <span class="colon">:</span>
+                            <div class="b unitbox">
+                                <h1 class="unit" id="hours">00</h1>
+                                <p>HOURS</p>
+                            </div>
+                            <span class="colon">:</span>
+                            <div class="c unitbox">
+                                <h1 class="unit" id="minutes">00</h1>
+                                <p>MINUTES</p>
+                            </div>
+                            <span class="colon">:</span>
+                            <div class="d unitbox">
+                                <h1 class="unit" id="seconds">00</h1>
+                                <p>SECONDS</p>
+                            </div>
+                        </div>
+
+
+
+                        <aside class="lines">
+                            <div class="lc">
+                                <hr class="fu">
+                                <hr class="nt">
+                                <hr class="fu">
+                            </div>
+                        </aside>
+                    </div>
+                </div>
+
+                <div class="Result" id="result">
+                    <h1 class="time-input mid-text">time between<p><span id="dateInput1">DEC 25TH 2022</span> <span
+                                id="and">&</span> <span id="dateInput2">19th april 2022</span> </p>
+                    </h1>
+                    <p class="notice" id="notice"><strong>Please note:</strong> The "big" digits represents the exact
+                        time difference <em>eg. 11 years, 3 months, 2 weeks, 2 days, 4 hours, 3s</em> while the "Raw"
+                        represents the accumulative time difference. <span><button class="OK"
+                                onclick="closeNotice()">OK</button></span></p>
+                    <br><br>
+                    <div class="srow">
+                        <div class="r-box">
+                            <h1 class="timeunit">Years</h1>
+                            <h1 class="total" id="iYears">00</h1>
+                            <p class="raw">~ Years : <span id="tYears"></span></p>
+                        </div>
+                        <div class="r-box">
+                            <h1 class="timeunit">Months</h1>
+                            <h1 class="total" id="iMonths">00</h1>
+                            <p class="raw">~ Months : <span id="tMonths"></span></p>
+                        </div>
+                        <div class="r-box">
+                            <h1 class="timeunit">Weeks</h1>
+                            <h1 class="total" id="iWeeks">00</h1>
+                            <p class="raw">~ Weeks : <span id="tWeeks"></span></p>
+                        </div>
+                    </div>
+
+                    <div class="frow">
+                        <div class="r-box">
+                            <h1 class="timeunit">Days</h1>
+                            <h1 class="total" id="iDays">00</h1>
+                            <p class="raw">~ Days : <span id="tDays"></span></p>
+                        </div>
+                        <div class="r-box">
+                            <h1 class="timeunit">Hours</h1>
+                            <h1 class="total" id="iHours">00</h1>
+                            <p class="raw">~ Hours : <span id="tHours"></span></p>
+                        </div>
+                        <div class="r-box">
+                            <h1 class="timeunit">Minutes</h1>
+                            <h1 class="total" id="iMinutes">00</h1>
+                            <p class="raw">~ Minutes : <span id="tMinutes"></span></p>
+                        </div>
+                        <div class="r-box">
+                            <h1 class="timeunit">Seconds</h1>
+                            <h1 class="total" id="iSeconds">00</h1>
+                            <p class="raw">~ Seconds : <span id="tSeconds"></span></p>
+                        </div>
+                    </div>
+
+                    <div class="rbuttons">
+                        <button onclick="done()">Done</button><button onclick="displayForm()">CALCULATE Another</button>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="subscribe">
+                <h1>GET NOTIFIED WHEN WE ARE READY <span class="icons8-jingle-bell"><img
+                            src="/HTML:CSS/IMAGES/icons8-jingle-bell-100.png" alt="" srcset="" width="40px"
+                            height="40px"></span></h1>
+                <div class="inputs">
+                    <input type="text" name="email" id="email" placeholder="EMAIL ADDRESS"><input type="submit"
+                        value="SUBSCRIBE">
+                </div>
+            </div>
+
+
+
+        </div>
+        <footer>
+            <div class="company">
+                <h1 class="jb">CODED BY JB</h1>
+                <h3 class="dc">UI : TamaraMilakovic</h3>
+            </div>
+
+            <div class="learnmore">
+                <h1>Learn more</h1>
+                <button class="btn"><img class="arrow" src="/HTML:CSS/IMAGES/icons8-chevron-right-30.png" alt="arrow"
+                        srcset=""></button>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>
